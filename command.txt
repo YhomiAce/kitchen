@@ -1,0 +1,1 @@
+protoc -I=protobuf --go_out=. --go-grpc_out=. protobuf/orders.proto

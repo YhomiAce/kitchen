@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package common;
+
+option go_package = "services/common/genproto/orders";
+
+
+service OrderService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+
+  rpc GetOrders(GetOrdersRequest) returns (GetOrderResponse);
+}
+
+message CreateOrderRequest {    
+  int32 customerId = 1;
+  int32 productId = 2;
+  int32 quantity = 3;
+}
+
+message CreateOrderResponse {
+  string status = 1;
+  float totalPrice = 2;
+}
+
+message GetOrdersRequest {
+   int32 customerId = 1;
+}
+
+message GetOrderResponse {
+  repeated Order orders = 1;
+}
+
+message Order {
+    int32 OrderId = 1;
+    int32 CustomerId = 2;
+    int32 ProductId = 3;
+    int32 Quantity = 4;
+}
